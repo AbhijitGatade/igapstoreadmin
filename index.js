@@ -4,7 +4,10 @@ var fs = require("fs");
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
+app.use(bodyParser.json({limit:'50mb'}));
+app.use(bodyParser.urlencoded({limit:'50mb', extended: true}));
 app.use(express.json());
+app.use(express.static('assets'));
 
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
